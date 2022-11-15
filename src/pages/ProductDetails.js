@@ -14,9 +14,16 @@ const ProductDetails = () => {
   // destructure product
   const { title, price, description, image, category } = product;
   return (
-    <div>
-      <img src={image} alt='' />
-    </div>
+    <section>
+      <div className='container mx-auto'>
+        <div className='flex'>
+          <div className='flex-1 flex justify-center items-center'>
+            <img className='max-w-md' src={image} alt='' />
+          </div>
+          <div className='flex-1 bg-pink-200'>text</div>
+        </div>
+      </div>
+    </section>
   );
 };
 

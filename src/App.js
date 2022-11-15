@@ -2,7 +2,7 @@ import React from 'react';
 // import router
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import pages
-import Products from './pages/Products';
+import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<Products />} />
+          <Route path='/' element={<Home />} />
           <Route path={`/product/:id`} element={<ProductDetails />} />
         </Routes>
       </Router>
