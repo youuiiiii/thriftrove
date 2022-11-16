@@ -13,7 +13,7 @@ const ProductDetails = () => {
   // destructure product
   const { title, price, description, image, category } = product;
   return (
-    <section>
+    <section className='py-24'>
       <div className='container mx-auto'>
         <div className='flex'>
           <div className='flex-1 flex justify-center items-center'>
