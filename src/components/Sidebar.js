@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? 'right-0' : '-right-full'
-      } bg-blue-200 fixed top-0 w-[420px] h-full transition-all duration-500 z-20`}
+      } bg-blue-200 fixed top-0 w-[420px] h-full transition-all duration-300 z-20`}
     >
       <div onClick={handleClose}>close</div>
       {cart.map((item) => {
