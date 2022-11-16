@@ -7,13 +7,14 @@ import { CartContext } from '../contexts/CartContext';
 
 const Sidebar = () => {
   const { cart, removeFromCart } = useContext(CartContext);
-  const { isOpen, handleOpen, handleClose } = useContext(SidebarContext);
+  const { isOpen, handleClose } = useContext(SidebarContext);
   return (
-    <aside
+    <div
       className={`${
         isOpen ? 'right-0' : '-right-full'
-      } bg-blue-200 fixed top-0 w-[420px] h-full`}
+      } bg-blue-200 fixed top-0 w-[420px] h-full transition-all duration-500 z-20`}
     >
+      <div onClick={handleClose}>close</div>
       {cart.map((item) => {
         return (
           <div key={item.id}>
@@ -28,7 +29,7 @@ const Sidebar = () => {
         );
       })}
       <Link to={`/cart`}>View cart</Link>
-    </aside>
+    </div>
   );
 };
 
