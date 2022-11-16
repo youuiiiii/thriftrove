@@ -28,8 +28,8 @@ const Home = () => {
             const { id, image, category, title, price } = product;
             return (
               <div key={id}>
-                <div className='border border-[#E4E4E4] h-[300px] rounded flex justify-center items-center mb-4 group-hover:border-gray-400 transition cursor-pointer group'>
-                  <Link to={`/product/${id}`}>
+                <Link to={`/product/${id}`}>
+                  <div className='border border-[#E4E4E4] h-[300px] rounded flex justify-center items-center mb-4 group-hover:border-gray-400 transition cursor-pointer group'>
                     <div className='w-[200px] mx-auto flex justify-center items-center'>
                       <img
                         className='max-h-[160px] group-hover:scale-110 transition duration-300'
@@ -37,8 +37,8 @@ const Home = () => {
                         alt=''
                       />
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <div className='text-sm capitalize text-gray-500 mb-1'>
                   {category}
                 </div>

@@ -9,7 +9,6 @@ const ProductDetails = () => {
   const product = products.find((item, index) => {
     return item.id === parseInt(id);
   });
-  console.log(product);
 
   // destructure product
   const { title, price, description, image, category } = product;
