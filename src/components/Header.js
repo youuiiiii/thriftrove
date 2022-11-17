@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // import icons
 import { BsBag } from 'react-icons/bs';
 // import logo
@@ -9,9 +9,19 @@ import { Link } from 'react-router-dom';
 import { SidebarContext } from '../contexts/SidebarContext';
 
 const Header = () => {
+  const [active, setActive] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      window.scrollY > 60 ? setActive(true) : setActive(false);
+    });
+  });
   return (
-    <header className='fixed w-full h-[80px] z-10'>
+    <header
+      className={`${
+        active ? 'bg-white py-4 shadow-md' : 'bg-none py-6'
+      } fixed w-full z-10 transition-all`}
+    >
       <div className='container mx-auto flex items-center justify-between h-full'>
         <Link to='/'>
           <div>
