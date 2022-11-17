@@ -4,7 +4,7 @@ import WomanImg from '../img/woman_hero.png';
 
 const HeroSlider = () => {
   return (
-    <section className='h-[800px] bg-gray-200 mb-12 py-24'>
+    <section className='h-[800px] bg-hero bg-no-repeat bg-cover bg-center  mb-12 py-24'>
       <div className='container mx-auto h-full flex justify-around'>
         {/* text */}
         <div className='flex flex-col justify-center'>
@@ -15,7 +15,7 @@ const HeroSlider = () => {
           </h1>
         </div>
         {/* image */}
-        <div className=''>
+        <div className='hidden lg:block'>
           <img src={WomanImg} alt='' />
         </div>
       </div>
