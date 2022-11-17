@@ -9,7 +9,7 @@ import { SidebarContext } from '../contexts/SidebarContext';
 import { CartContext } from '../contexts/CartContext';
 
 const Sidebar = () => {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
   const { isOpen, handleClose } = useContext(SidebarContext);
   return (
     <div
@@ -34,6 +34,9 @@ const Sidebar = () => {
         );
       })}
       <Link to={`/cart`}>View cart</Link>
+      <div onClick={clearCart} className='cursor-pointer'>
+        Clear cart
+      </div>
     </div>
   );
 };
