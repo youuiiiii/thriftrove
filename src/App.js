@@ -11,9 +11,9 @@ import Header from './components/Header';
 
 const App = () => {
   return (
-    <>
-      <Header />
+    <div className='overflow-hidden'>
       <Router>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path={`/product/:id`} element={<ProductDetails />} />
@@ -21,7 +21,7 @@ const App = () => {
         </Routes>
         <Sidebar />
       </Router>
-    </>
+    </div>
   );
 };
 

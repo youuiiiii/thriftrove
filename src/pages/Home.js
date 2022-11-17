@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
 // import components
-import HeroSlider from '../components/HeroSlider';
+import Hero from '../components/Hero';
 
 const Home = () => {
   const { products } = useContext(ProductContext);
@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <div>
-      <HeroSlider />
+      <Hero />
       <div className='container mx-auto'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0'>
           {filteredProducts.map((product) => {
