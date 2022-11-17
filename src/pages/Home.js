@@ -11,7 +11,7 @@ const Home = () => {
   const { products } = useContext(ProductContext);
   const { addToCart } = useContext(CartContext);
 
-  // get only women's and men's category items
+  // get women and men category items
   const filteredProducts = products.filter((item) => {
     return (
       item.category === "men's clothing" || item.category === "women's clothing"
@@ -29,7 +29,7 @@ const Home = () => {
             return (
               <div key={id}>
                 <Link to={`/product/${id}`}>
-                  <div className='border border-[#E4E4E4] h-[300px] rounded flex justify-center items-center mb-4 group-hover:border-gray-400 transition cursor-pointer group'>
+                  <div className='border border-[#E4E4E4] h-[300px] flex justify-center items-center mb-4 group-hover:border-gray-400 transition cursor-pointer group'>
                     <div className='w-[200px] mx-auto flex justify-center items-center'>
                       <img
                         className='max-h-[160px] group-hover:scale-110 transition duration-300'
