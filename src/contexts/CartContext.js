@@ -64,7 +64,6 @@ const CartProvider = ({ children }) => {
         }
       });
       setCart(newCart);
-      console.log(cartItem.amount);
     }
     if (cartItem.amount < 2) {
       removeFromCart(id);

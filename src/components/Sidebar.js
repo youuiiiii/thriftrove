@@ -27,7 +27,7 @@ const Sidebar = () => {
       {/* header */}
       <header className='bg-gray-100 py-8 px-10 flex justify-between'>
         <div className='uppercase font-medium'>Shopping Bag({itemAmount})</div>
-        <div onClick={handleClose} className='cursor-pointer'>
+        <div onClick={handleClose} className='cursor-pointer '>
           <GrClose className='text-[18px]' />
         </div>
       </header>
@@ -36,35 +36,31 @@ const Sidebar = () => {
         {cart.map((item) => {
           const { id, title, image, amount } = item;
           return (
-            <div
-              className='flex justify-between gap-x-5 py-5 bg-pink-200'
-              key={id}
-            >
+            <div className='flex justify-between gap-x-5 py-5' key={id}>
               <div>
                 <img className='max-w-[80px]' src={image} alt='' />
               </div>
               <div className='flex-1'>
                 {/* title */}
-                <div>{title}</div>
-
-                {/* quantity */}
-                <div className='bg-green-400 flex items-center'>
-                  {/* decrease amount */}
-                  <div
-                    className='text-2xl cursor-pointer'
-                    onClick={() => decreaseAmount(id)}
-                  >
-                    -
+                <div className='mb-2 font-medium'>{title}</div>
+                <div className='flex justify-between items-center'>
+                  <div className='flex items-center w-[56px] justify-between text-base text-gray-500 font-medium'>
+                    <div
+                      className='text-xl cursor-pointer'
+                      onClick={() => decreaseAmount(id)}
+                    >
+                      -
+                    </div>
+                    <div>{amount}</div>
+                    <div
+                      className='text-xl cursor-pointer'
+                      onClick={() => increaseAmount(id)}
+                    >
+                      +
+                    </div>
                   </div>
-                  {/* amount */}
-                  <div>{amount}</div>
-                  {/* increase amount */}
-                  <div
-                    className='text-2xl cursor-pointer'
-                    onClick={() => increaseAmount(id)}
-                  >
-                    +
-                  </div>
+                  {/* price */}
+                  <div className='text-base font-medium'>${item.price}</div>
                 </div>
               </div>
               <div
@@ -72,7 +68,7 @@ const Sidebar = () => {
                 onClick={() => removeFromCart(id)}
               >
                 <div>
-                  <GrClose className='text-sm' />
+                  <GrClose className='text-sm text-red-400' />
                 </div>
               </div>
             </div>
