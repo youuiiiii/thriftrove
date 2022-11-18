@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 // import links
 import { Link } from 'react-router-dom';
 // import icons
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io';
 // import aside context
 import { SidebarContext } from '../contexts/SidebarContext';
 // import cart context
@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? 'right-0' : '-right-full'
-      } bg-white shadow-2xl fixed top-0 w-[420px] h-full transition-all duration-300 z-20`}
+      } bg-white shadow-2xl fixed top-0 w-[480px] h-full transition-all duration-300 z-20`}
     >
       {/* header */}
       <header className='bg-black text-white py-6 px-10 flex justify-between'>
@@ -45,27 +45,27 @@ const Sidebar = () => {
               </div>
               <div className='flex-1'>
                 {/* title */}
-                <div className='mb-2 font-medium'>{title}</div>
+                <div className='mb-4 font-medium'>{title}</div>
                 <div className='flex justify-between items-center'>
-                  <div className='bg-pink-200 flex items-center gap-x-4'>
-                    <div className='flex items-center w-[56px] justify-between text-sm text-gray-500'>
+                  <div className='flex items-center gap-x-4'>
+                    <div className='flex items-center w-[56px] justify-between text-gray-500'>
                       <div
-                        className='text-xl cursor-pointer'
+                        className='cursor-pointer'
                         onClick={() => decreaseAmount(id)}
                       >
-                        -
+                        <IoMdRemove />
                       </div>
-                      <div>{amount}</div>
+                      <div className='select-none'>{amount}</div>
                       <div
-                        className='text-xl cursor-pointer'
+                        className='cursor-pointer'
                         onClick={() => increaseAmount(id)}
                       >
-                        +
+                        <IoMdAdd />
                       </div>
                     </div>
-                    <div className='text-sm text-gray-500'>${item.price}</div>
+                    <div className='text-gray-500'>${item.price}</div>
                   </div>
-                  <div className='text-base font-medium'>
+                  <div className=' font-semibold'>
                     {/* round number at 2 decimal places */}$
                     {parseFloat(item.price * amount).toFixed(2)}
                   </div>
