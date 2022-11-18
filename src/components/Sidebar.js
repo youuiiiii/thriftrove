@@ -22,52 +22,59 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? 'right-0' : '-right-full'
-      } bg-white shadow-2xl fixed top-0 w-[480px] h-full transition-all duration-300 z-20`}
+      } bg-white shadow-2xl fixed top-0 w-[480px] h-full transition-all duration-300 z-20 px-[35px]`}
     >
-      {/* header */}
-      <header className='bg-black text-white py-6 px-10 flex justify-between'>
-        <div className='uppercase font-medium'>Shopping Bag({itemAmount})</div>
+      <div className='bg-white border-b py-6 flex justify-between'>
+        <div className='uppercase text-sm font-semibold'>
+          Shopping Bag({itemAmount})
+        </div>
         <div onClick={handleClose} className='cursor-pointer'>
           <IoMdClose className='text-xl' />
         </div>
-      </header>
-      <div className='flex flex-col gap-y-2 px-10 py-[30px] max-h-[800px] overflow-y-auto'>
-        {/* cart items */}
+      </div>
+      <div className='flex flex-col gap-y-2 py-[30px] h-[600px] overflow-y-auto overflow-x-hidden border-b'>
         {cart.map((item) => {
-          const { id, title, image, amount } = item;
+          const { id, title, image, price, amount } = item;
           return (
             <div
-              className='flex justify-between gap-x-5 py-5 border-b border-gray-300'
+              className='flex gap-x-4 py-5 border-b border-gray-200'
               key={id}
             >
               <div>
                 <img className='max-w-[80px]' src={image} alt='' />
               </div>
-              <div className='flex-1'>
+              <div className='max-w-[270px]'>
                 {/* title */}
-                <div className='mb-4 font-medium'>{title}</div>
-                <div className='flex justify-between items-center'>
-                  <div className='flex items-center gap-x-4'>
-                    <div className='flex items-center w-[56px] justify-between text-gray-500'>
+                <div className='mb-4 text-sm uppercase font-medium max-w-[240px]'>
+                  {title}
+                </div>
+                <div className='flex items-center gap-x-12'>
+                  <div className='text-base font-light text-gray-500 flex items-center gap-x-4'>
+                    {/* quantity field */}
+                    <div className='flex w-[100px] h-10 items-center border'>
+                      {/* remove icon */}
                       <div
-                        className='cursor-pointer'
                         onClick={() => decreaseAmount(id)}
+                        className='flex-1 w-6 h-6 flex justify-center items-center cursor-pointer'
                       >
                         <IoMdRemove />
                       </div>
-                      <div className='select-none'>{amount}</div>
+                      {/* quantity amount */}
+                      <div className='flex-1 flex justify-center items-center text-primary font-medium text-sm'>
+                        {amount}
+                      </div>
+                      {/* add icon */}
                       <div
-                        className='cursor-pointer'
                         onClick={() => increaseAmount(id)}
+                        className='flex-1 flex justify-center items-center cursor-pointer'
                       >
                         <IoMdAdd />
                       </div>
                     </div>
-                    <div className='text-gray-500'>${item.price}</div>
+                    <div className='text-primary text-sm'>${price}</div>
                   </div>
-                  <div className=' font-semibold'>
-                    {/* round number at 2 decimal places */}$
-                    {parseFloat(item.price * amount).toFixed(2)}
+                  <div className=' text-primary font-semibold text-sm'>
+                    ${parseFloat(item.price * amount).toFixed(2)}
                   </div>
                 </div>
               </div>
@@ -82,12 +89,14 @@ const Sidebar = () => {
             </div>
           );
         })}
-        <div className='h-[30px] bg-black'>
-          <Link to={`/cart`}>View cart</Link>
-        </div>
-        <div onClick={clearCart} className='cursor-pointer'>
+      </div>
+      <div className='flex flex-col justify-center items-center h-[260px]'>
+        <div onClick={clearCart} className='cursor-pointer text-red-500'>
           Clear cart
         </div>
+        <Link className=' bg-black text-white p-4 w-full' to={`/cart`}>
+          View cart
+        </Link>
       </div>
     </div>
   );
