@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 // import links
 import { Link } from 'react-router-dom';
 // import icons
-import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io';
+import {
+  IoMdClose,
+  IoMdAdd,
+  IoMdRemove,
+  IoMdArrowForward,
+} from 'react-icons/io';
 // import aside context
 import { SidebarContext } from '../contexts/SidebarContext';
 // import cart context
@@ -29,7 +34,7 @@ const Sidebar = () => {
           Shopping Bag({itemAmount})
         </div>
         <div onClick={handleClose} className='cursor-pointer'>
-          <IoMdClose className='text-xl' />
+          <IoMdArrowForward className='text-xl' />
         </div>
       </div>
       <div className='flex flex-col gap-y-2 py-[30px] h-[600px] overflow-y-auto overflow-x-hidden border-b'>
