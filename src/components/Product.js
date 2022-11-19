@@ -10,10 +10,10 @@ const Product = ({ item }) => {
   const { id, title, image, price, amount } = item;
   return (
     <div
-      className='flex gap-x-4 py-2 px-6 border-b border-gray-200 w-full font-light text-gray-500'
+      className='flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 w-full font-light text-gray-500'
       key={id}
     >
-      <div className='w-full min-h-[150px] flex items-center  gap-x-4'>
+      <div className='w-full min-h-[150px] flex items-center gap-x-4'>
         {/* image */}
         <div>
           <img className='max-w-[80px]' src={image} alt='' />
