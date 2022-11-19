@@ -8,11 +8,16 @@ const HeroSlider = () => {
       <div className='container mx-auto h-full flex justify-around'>
         {/* text */}
         <div className='flex flex-col justify-center'>
-          <span className='text-sm font-medium'>NEW TREND</span>
-          <h1 className='text-[70px] leading-[1.1] font-light'>
+          <div className='font-semibold flex items-center'>
+            <div className='w-10 h-[2px] bg-red-600 mr-3'></div> NEW TREND
+          </div>
+          <h1 className='text-[70px] leading-[1.1] font-light mb-4'>
             AUTUMN SALE STYLISH <br />
             <span className='font-semibold'>WOMENS</span>
           </h1>
+          <div className='self-start uppercase font-semibold border-b'>
+            Discover More
+          </div>
         </div>
         {/* image */}
         <div className='hidden lg:block'>
