@@ -6,9 +6,13 @@ const ProductDetails = () => {
   const { products } = useContext(ProductContext);
   const { id } = useParams();
   // get single product
-  const product = products.find((item, index) => {
+  const product = products.find((item) => {
     return item.id === parseInt(id);
   });
+
+  if (!product) {
+    return <h1>Loading...</h1>;
+  }
 
   // destructure product
   const { title, price, description, image, category } = product;

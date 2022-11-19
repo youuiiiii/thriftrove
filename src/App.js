@@ -8,6 +8,7 @@ import Cart from './pages/Cart';
 // import components
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path={`/cart`} element={<Cart />} />
         </Routes>
         <Sidebar />
+        <Footer />
       </Router>
     </div>
   );
