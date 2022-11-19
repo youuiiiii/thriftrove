@@ -8,6 +8,7 @@ import {
   IoMdRemove,
   IoMdArrowForward,
 } from 'react-icons/io';
+import { FiTrash2 } from 'react-icons/fi';
 // import aside context
 import { SidebarContext } from '../contexts/SidebarContext';
 // import cart context
@@ -107,11 +108,13 @@ const Sidebar = () => {
         })}
       </div>
       <div className='flex flex-col gap-y-2 py-4'>
-        <div
-          onClick={clearCart}
-          className='cursor-pointer py-4 bg-red-500 text-white w-[50%] flex justify-center items-center'
-        >
-          Clear cart
+        <div className='w-full flex justify-end'>
+          <div
+            onClick={clearCart}
+            className='cursor-pointer py-4 bg-red-500 text-white flex justify-center items-center w-12 h-12 text-xl'
+          >
+            <FiTrash2 />
+          </div>
         </div>
         <Link
           className='bg-gray-200 flex justify-center items-center text-primary p-4 w-full font-medium'
