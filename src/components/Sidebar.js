@@ -107,7 +107,7 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <div className='flex flex-col gap-y-2 py-4'>
+      <div className='flex flex-col gap-y-3 py-4 mt-4'>
         <div className='w-full flex justify-end'>
           <div
             onClick={clearCart}
