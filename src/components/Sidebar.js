@@ -85,9 +85,12 @@ const Sidebar = () => {
                       </div>
                     </div>
                     {/* item price */}
-                    <div className='bg-yellow-300 flex-1'>price</div>
+                    <div className='bg-yellow-300 flex-1'>{price}</div>
                     {/* final price */}
-                    <div className='bg-green-300 flex-1'>final price</div>
+                    <div className='bg-green-300 flex-1'>
+                      {/* make the price at 2 decimals */}
+                      {parseFloat(item.price * amount).toFixed(2)}
+                    </div>
                   </div>
                 </div>
               </div>
