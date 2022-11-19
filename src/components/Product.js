@@ -1,74 +1,48 @@
 import React, { useContext } from 'react';
+// import link
+import { Link } from 'react-router-dom';
 // import icons
-import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io';
+import { BsPlus } from 'react-icons/bs';
 // import cart context
 import { CartContext } from '../contexts/CartContext';
 
-const Product = ({ item }) => {
-  const { increaseAmount, decreaseAmount, removeFromCart } =
-    useContext(CartContext);
-  const { id, title, image, price, amount } = item;
+const Product = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+  // destructure product
+  const { id, image, category, title, price } = product;
   return (
-    <div
-      className='flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 w-full font-light text-gray-500'
-      key={id}
-    >
-      <div className='w-full min-h-[150px] flex items-center gap-x-4'>
-        {/* image */}
-        <div>
-          <img className='max-w-[80px]' src={image} alt='' />
+    <div>
+      <div>
+        <div className='border border-[#E4E4E4] h-[300px]  mb-4 transition cursor-pointer group relative overflow-hidden'>
+          <Link to={`/product/${id}`}>
+            <div className='w-full h-full flex justify-center items-center'>
+              {/* image */}
+              <div className='w-[200px] mx-auto flex justify-center items-center'>
+                <img
+                  className='max-h-[160px] group-hover:scale-110 transition duration-300'
+                  src={image}
+                  alt=''
+                />
+              </div>
+            </div>
+          </Link>
+          {/* button */}
+          <button
+            onClick={() => addToCart(product, id)}
+            className='p-2 bg-red-500 text-white flex items-center justify-center gap-x-4 rounded-full px-4 w-10 h-10 text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 absolute top-6 -right-11 group-hover:right-5 hover:scale-110'
+          >
+            <div>
+              <BsPlus className='text-4xl' />
+            </div>
+          </button>
         </div>
-
-        <div className='w-full flex flex-col'>
-          {/* title & remove item icon */}
-          <div className='flex justify-between mb-2'>
-            {/* title */}
-            <div className='mb-4 text-sm uppercase font-medium max-w-[240px] text-primary'>
-              {title}
-            </div>
-            {/* remove item icon */}
-            <div
-              className='cursor-pointer text-xl'
-              onClick={() => removeFromCart(id)}
-            >
-              <div>
-                <IoMdClose className='text-gray-500 hover:text-red-500 transition' />
-              </div>
-            </div>
-          </div>
-          <div className='flex gap-x-2 h-[36px] text-sm'>
-            {/* quantity */}
-            <div className='flex flex-1 items-center h-full border text-primary font-medium'>
-              {/* icon remove */}
-              <div
-                onClick={() => decreaseAmount(id)}
-                className='flex-1 h-full flex justify-center items-center cursor-pointer'
-              >
-                <IoMdRemove />
-              </div>
-              {/* amount */}
-              <div className='h-full flex justify-center items-center px-2'>
-                {amount}
-              </div>
-              {/* icon add */}
-              <div
-                onClick={() => increaseAmount(id)}
-                className='flex-1 h-full flex justify-center items-center cursor-pointer'
-              >
-                <IoMdAdd />
-              </div>
-            </div>
-            {/* item price */}
-            <div className='flex-1 flex items-center justify-around'>
-              $ {price}
-            </div>
-            {/* final price */}
-            <div className='flex-1 flex justify-end items-center text-primary font-medium'>
-              {/* make the price at 2 decimals */}
-              {`$ ${parseFloat(item.price * amount).toFixed(2)}`}
-            </div>
-          </div>
-        </div>
+      </div>
+      <div>
+        <div className='text-sm capitalize text-gray-500 mb-1'>{category}</div>
+        <Link to={`/product/${id}`}>
+          <h2 className='font-semibold mb-1'>{title}</h2>
+        </Link>
+        <div className='font-semibold'>${price}</div>
       </div>
     </div>
   );

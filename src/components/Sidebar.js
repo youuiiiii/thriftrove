@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { IoMdArrowForward } from 'react-icons/io';
 import { FiTrash2 } from 'react-icons/fi';
 // import components
-import Product from './Product';
+import CartItem from './CartItem';
 // import sidebar context
 import { SidebarContext } from '../contexts/SidebarContext';
 // import cart context
@@ -30,7 +30,7 @@ const Sidebar = () => {
       </div>
       <div className='flex flex-col gap-y-2 h-[520px] lg:h-[640px] overflow-y-auto overflow-x-hidden border-b'>
         {cart.map((item) => {
-          return <Product item={item} key={item.id} />;
+          return <CartItem item={item} key={item.id} />;
         })}
       </div>
       <div className='flex flex-col gap-y-3 py-4 mt-4'>
