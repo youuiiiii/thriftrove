@@ -18,7 +18,7 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? 'right-0' : '-right-full'
-      } bg-white shadow-2xl fixed top-0 w-[90vw] lg:w-[35vw] h-full transition-all duration-300 z-20 px-[35px]`}
+      } bg-white shadow-2xl fixed top-0 w-full lg:w-[35vw] h-full transition-all duration-300 z-20 px-4  lg:px-[35px]`}
     >
       <div className='bg-white border-b py-6 flex justify-between items-center'>
         <div className='uppercase text-sm font-semibold'>
