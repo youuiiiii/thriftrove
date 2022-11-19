@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 // import icons
 import { IoMdClose, IoMdAdd, IoMdRemove } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 // import cart context
 import { CartContext } from '../contexts/CartContext';
 
@@ -15,17 +16,20 @@ const CartItem = ({ item }) => {
     >
       <div className='w-full min-h-[150px] flex items-center gap-x-4'>
         {/* image */}
-        <div>
+        <Link to={`/product/${id}`}>
           <img className='max-w-[80px]' src={image} alt='' />
-        </div>
+        </Link>
 
         <div className='w-full flex flex-col'>
           {/* title & remove item icon */}
           <div className='flex justify-between mb-2'>
             {/* title */}
-            <div className='mb-4 text-sm uppercase font-medium max-w-[240px] text-primary'>
+            <Link
+              to={`/product/${id}`}
+              className='mb-4 text-sm uppercase font-medium max-w-[240px] text-primary hover:underline'
+            >
               {title}
-            </div>
+            </Link>
             {/* remove item icon */}
             <div
               className='cursor-pointer text-xl'
@@ -38,7 +42,7 @@ const CartItem = ({ item }) => {
           </div>
           <div className='flex gap-x-2 h-[36px] text-sm'>
             {/* quantity */}
-            <div className='flex flex-1 items-center h-full border text-primary font-medium'>
+            <div className='flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium'>
               {/* icon remove */}
               <div
                 onClick={() => decreaseAmount(id)}
