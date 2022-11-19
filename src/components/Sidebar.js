@@ -29,12 +29,12 @@ const Sidebar = () => {
         isOpen ? 'right-0' : '-right-full'
       } bg-white shadow-2xl fixed top-0 w-[480px] h-full transition-all duration-300 z-20 px-[35px]`}
     >
-      <div className='bg-white border-b py-6 flex justify-between'>
+      <div className='bg-white border-b py-6 flex justify-between items-center'>
         <div className='uppercase text-sm font-semibold'>
           Shopping Bag({itemAmount})
         </div>
         <div onClick={handleClose} className='cursor-pointer'>
-          <IoMdArrowForward className='text-xl' />
+          <IoMdArrowForward className='text-2xl' />
         </div>
       </div>
       <div className='flex flex-col gap-y-2 py-[30px] h-[600px] overflow-y-auto overflow-x-hidden border-b'>
@@ -42,53 +42,53 @@ const Sidebar = () => {
           const { id, title, image, price, amount } = item;
           return (
             <div
-              className='flex gap-x-4 py-5 border-b border-gray-200'
+              className='flex gap-x-4 py-4 px-2 border-b border-gray-200 bg-purple-100 w-full'
               key={id}
             >
-              <div>
-                <img className='max-w-[80px]' src={image} alt='' />
-              </div>
-              <div className='max-w-[270px]'>
-                {/* title */}
-                <div className='mb-4 text-sm uppercase font-medium max-w-[240px]'>
-                  {title}
+              <div className='w-full min-h-[160px] flex gap-x-3'>
+                {/* image */}
+                <div>
+                  <img className='max-w-[80px]' src={image} alt='' />
                 </div>
-                <div className='flex items-center gap-x-12'>
-                  <div className='text-base font-light text-gray-500 flex items-center gap-x-4'>
-                    {/* quantity field */}
-                    <div className='flex w-[100px] h-10 items-center border'>
-                      {/* remove icon */}
-                      <div
-                        onClick={() => decreaseAmount(id)}
-                        className='flex-1 w-6 h-6 flex justify-center items-center cursor-pointer'
-                      >
+
+                <div className='bg-red-300 w-full flex flex-col'>
+                  {/* title & remove item icon */}
+                  <div className='flex justify-between'>
+                    {/* title */}
+                    <div className='mb-4 text-sm uppercase font-medium max-w-[240px]'>
+                      {title}
+                    </div>
+                    {/* remove item icon */}
+                    <div
+                      className='cursor-pointer text-xl'
+                      onClick={() => removeFromCart(id)}
+                    >
+                      <div>
+                        <IoMdClose className='text-gray-500 hover:text-red-500 transition' />
+                      </div>
+                    </div>
+                  </div>
+                  <div className='flex gap-x-2 h-[40px]'>
+                    {/* quantity */}
+                    <div className='flex bg-red-500 flex-1 items-center h-full'>
+                      {/* icon remove */}
+                      <div className='flex-1 bg-yellow-300 h-full flex justify-center items-center'>
                         <IoMdRemove />
                       </div>
-                      {/* quantity amount */}
-                      <div className='flex-1 flex justify-center items-center text-primary font-medium text-sm'>
+                      {/* amount */}
+                      <div className='flex-1 bg-yellow-300 h-full flex justify-center items-center'>
                         {amount}
                       </div>
-                      {/* add icon */}
-                      <div
-                        onClick={() => increaseAmount(id)}
-                        className='flex-1 flex justify-center items-center cursor-pointer'
-                      >
+                      {/* icon add */}
+                      <div className='flex-1 bg-yellow-300 h-full flex justify-center items-center'>
                         <IoMdAdd />
                       </div>
                     </div>
-                    <div className='text-primary text-sm'>${price}</div>
+                    {/* item price */}
+                    <div className='bg-yellow-300 flex-1'>price</div>
+                    {/* final price */}
+                    <div className='bg-green-300 flex-1'>final price</div>
                   </div>
-                  <div className=' text-primary font-semibold text-sm'>
-                    ${parseFloat(item.price * amount).toFixed(2)}
-                  </div>
-                </div>
-              </div>
-              <div
-                className='cursor-pointer text-xl'
-                onClick={() => removeFromCart(id)}
-              >
-                <div>
-                  <IoMdClose className='text-gray-500 hover:text-red-500 transition' />
                 </div>
               </div>
             </div>
