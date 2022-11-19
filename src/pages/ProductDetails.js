@@ -11,15 +11,15 @@ const ProductDetails = () => {
   });
 
   if (!product) {
-    return <h1>Loading...</h1>;
+    return <section className=''>Loading...</section>;
   }
 
   // destructure product
   const { title, price, description, image, category } = product;
   return (
-    <section className='py-24'>
+    <section className='py-32 h-screen'>
       <div className='container mx-auto'>
-        <div className='flex'>
+        <div className='flex bg-blue-200'>
           <div className='flex-1 flex justify-center items-center'>
             <img className='max-w-md' src={image} alt='' />
           </div>

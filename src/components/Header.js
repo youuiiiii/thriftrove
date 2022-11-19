@@ -27,11 +27,14 @@ const Header = () => {
       } fixed w-full z-10 transition-all`}
     >
       <div className='container mx-auto flex items-center justify-between h-full'>
+        {/* logo */}
         <Link to='/'>
           <div>
             <img className='w-[40px]' src={Logo} alt='' />
           </div>
         </Link>
+
+        {/* cart */}
         <div
           onClick={() => setIsOpen(!isOpen)}
           className='cursor-pointer flex relative'
