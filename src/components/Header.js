@@ -1,47 +1,77 @@
 import React, { useContext, useEffect, useState } from 'react';
-// sidebar context
 import { SidebarContext } from '../contexts/SidebarContext';
-// cart context
 import { CartContext } from '../contexts/CartContext';
-// import icons
-import { BsBag } from 'react-icons/bs';
-// import link
+import { BsBag, BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-// import logo
 import Logo from '../img/logo.svg';
+import '../csscomponents/Header.css';
 
 const Header = () => {
-  // header state
   const [isActive, setIsActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
-  // event listener
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
-    });
-  });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Perform search based on searchQuery
+    console.log('Search Query:', searchQuery);
+    // You can implement the search logic here, such as making an API request or updating search results in the component state.
+    // Example: Call a search function passing searchQuery as an argument.
+    // searchFunction(searchQuery);
+  };
+
   return (
-    <header
-      className={`${
-        isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'
-      } fixed w-full z-10 transition-all`}
-    >
-      <div className='container mx-auto flex items-center justify-between h-full'>
-        {/* logo */}
-        <Link to={'/'}>
-          <div>
-            <img className='w-[40px]' src={Logo} alt='' />
-          </div>
-        </Link>
-        {/* cart */}
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className='cursor-pointer flex relative'
-        >
-          <BsBag className='text-2xl' />
-          <div className='bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center'>
-            {itemAmount}
+    <header className={`header ${isActive ? 'bg-white' : 'bg-transparent'}`}>
+      <div className='container mx-auto'>
+        <div className='logo'>
+          <Link to='/'>
+            <img src={Logo} alt='Logo' />
+            <span>ThriftTrove</span>
+          </Link>
+        </div>
+        <div className='nav'>
+          <ul className='navbar-menu'>
+            <li>
+              <Link to='/shop'>Shop</Link>
+            </li>
+            <li>
+              <Link to='/contact'>Contact</Link>
+            </li>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+          </ul>
+          <form className='search-form' onSubmit={handleSearchSubmit}>
+            <div className='relative'>
+              <input
+                type='text'
+                placeholder='Search'
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+              <BsSearch className='search-icon' />
+            </div>
+          </form>
+          <div onClick={() => setIsOpen(!isOpen)} className='cart-icon'>
+            <BsBag className='text-2xl text-gray-800' />
+            <div className='cart-badge'>{itemAmount}</div>
           </div>
         </div>
       </div>

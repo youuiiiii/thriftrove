@@ -8,10 +8,12 @@ import ProductDetails from './pages/ProductDetails';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CustomCursor from './cursors/customcursor';
 
 const App = () => {
   return (
     <div className='overflow-hidden'>
+      <CustomCursor />
       <Router>
         <Header />
         <Routes>
